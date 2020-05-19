@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table width="50%" border="1" cellpadding="8">
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Email</td>
+        <td>Update</td>
+        <td>Delete</td>
+        <td>Update Role</td>
+    </tr>
+
+    <tr th:each="message :${messages}">
+        <td th:utext="${message.firstName}"></td>
+        <td th:utext="${message.lastName}"></td>
+        <td th:utext="${message.email}"></td>
+        <td>
+            <form action="/admin/getUpdate">
+                <input hidden type="text" name="id" th:value="${message.id}">
+                <button>Update</button>
+            </form>
+        </td>
+        <td>
+            <form action="/admin/delete">
+                <input hidden type="text" name="id" th:value="${message.id}">
+                <button>Delete</button>
+            </form>
+        </td>
+        <td>
+            <form action="/admin/updateRole" method="post">
+                <input hidden type="text" name="id" th:value="${message.id}">
+                <select name="selectRole">
+                    <option>ADMIN</option>
+                    <option>USER</option>
+                </select>
+                <button>Update Role</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<form action="/admin/add" method="post" th:object="${user}">
+    Firs Name:<br>
+    <input type="text" th:field="${user.firstName}"><br><br>
+    Last Name:<br>
+    <input type="text" th:field="${user.lastName}"><br><br>
+    Email:<br>
+    <input type="text" th:field="${user.email}"><br><br>
+    Password:<br>
+    <input type="text" th:field="${user.password}"><br><br>
+    Role:<br>
+    <input type="text" name="role">
+    <button>Let's go...</button>
+</form>
+<a href="/logout">Logout</a>
+</body>
+</html>
