@@ -4,15 +4,15 @@
 </head>
 <body>
 <form action="/admin/update" method="post" th:object="${user}">
-    <input type="hidden" th:value="${user.id}" name="id">
+    <input type="hidden" th:field="${user.id}" name="id">
     NewFirstName:<br>
-    <input type="text" th:value="${user.firstName}" name="newFirstName"><br><br>
+    <input type="text" th:field="${user.firstName}" name="newFirstName"><br><br>
     NewLastName:<br>
-    <input type="text" th:value="${user.lastName}" name="newLastName"><br><br>
+    <input type="text" th:field="${user.lastName}" name="newLastName"><br><br>
     NewEmail:<br>
-    <input type="text" th:value="${user.email}" name="newEmail"><br><br>
+    <input type="text" th:field="${user.email}" name="newEmail"><br><br>
     NewPassword:<br>
-    <input type="text" th:value="${user.password}" name="newPassword"><br><br>
+    <input type="text" th:field="${user.password}" name="newPassword"><br><br>
     <button formmethod="post">Let's go update...</button>
 </form>
 </body>

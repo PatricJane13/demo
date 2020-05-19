@@ -45,12 +45,7 @@ public class AllUsersController {
     }
 
     @PostMapping(value = "update")
-    public String updateUser(@RequestParam("id") Long id,
-                             @RequestParam("newFirstName") String newFirstName,
-                             @RequestParam("newLastName") String newLastName,
-                             @RequestParam("newEmail") String newEmail,
-                             @RequestParam("newPassword") String password) throws IOException {
-        User user = new User(id, newFirstName, newLastName, newEmail, password);
+    public String updateUser(@ModelAttribute User user) throws IOException {
         userService.updateUser(user);
         return "redirect:/admin/all";
     }
